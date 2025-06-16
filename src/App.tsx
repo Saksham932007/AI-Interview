@@ -6,6 +6,9 @@ import { SignInPage } from "./routes/sing-in";
 import { SignUpPage } from "./routes/sing-up";
 import ProtectedRoutes from "./layout/protected-routes";
 import { MainLayout } from "./layout/main-layout";
+import { Generate } from "./components/generate";
+import { Dashboard } from "./routes/dashboard";
+import { CreateEditPage } from "./routes/create-edit-page";
 
 function App() {
   return (
@@ -26,7 +29,12 @@ function App() {
               <MainLayout />
             </ProtectedRoutes>
           }
-        ></Route>
+        >
+          <Route element={<Generate />} path="/generate">
+            <Route index element={<Dashboard />} />
+            <Route path=":interviewId" element={<CreateEditPage />} />
+          </Route>
+        </Route>
       </Routes>
     </Router>
   );
