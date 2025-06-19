@@ -7,9 +7,9 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import { NavigationRoutes } from "./navigation-routes";
+import { useAuth } from "@clerk/clerk-react";
 import { NavLink } from "react-router-dom";
 import { cn } from "@/lib/utils";
-import { useAuth } from "@clerk/clerk-react";
 
 export const ToggleContainer = () => {
   const { userId } = useAuth();
@@ -22,6 +22,7 @@ export const ToggleContainer = () => {
         <SheetHeader>
           <SheetTitle />
         </SheetHeader>
+
         <nav className="gap-6 flex flex-col items-start">
           <NavigationRoutes isMobile />
           {userId && (
@@ -29,12 +30,12 @@ export const ToggleContainer = () => {
               to={"/generate"}
               className={({ isActive }) =>
                 cn(
-                  "text-base text-neutral",
+                  "text-base text-neutral-600 ",
                   isActive && "text-neutral-900 font-semibold"
                 )
               }
             >
-              Take an Interview
+              Take An Interview
             </NavLink>
           )}
         </nav>
